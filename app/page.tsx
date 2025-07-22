@@ -48,7 +48,6 @@ export default function HomePage() {
   const [activePersona, setActivePersona] = useState(0)
   const [showPromoModal, setShowPromoModal] = useState(false)
   const { scrollYProgress } = useScroll()
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   // Parallax effects
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
@@ -409,7 +408,7 @@ export default function HomePage() {
                 The Best All-in-One
               </span>
               <span className="block bg-gradient-to-r from-blue-600 via-purple-500 to-pink-600 bg-clip-text text-transparent">
-                AI Business Platform
+                AI Affiliate Platform
               </span>
               <motion.span
                 className="block text-gray-700 text-3xl md:text-5xl lg:text-6xl font-light mt-4"
@@ -417,7 +416,7 @@ export default function HomePage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
               >
-                for Local Commerce
+                to Scale Your Business
               </motion.span>
             </motion.h1>
 

@@ -22,15 +22,16 @@ export default function Navigation() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    {
-      name: "Solutions",
-      href: "/features",
-      dropdown: [
-        { name: "Features", href: "/features" },
-        { name: "AI Analytics", href: "/analytics" },
-        { name: "Integrations", href: "/integrations" },
-      ],
-    },
+    { name: "Features", href: "/features" },
+    // {
+    //   name: "Solutions",
+    //   href: "/features",
+    //   dropdown: [
+    //     { name: "Features", href: "/features" },
+    //     { name: "AI Analytics", href: "/analytics" },
+    //     { name: "Integrations", href: "/integrations" },
+    //   ],
+    // },
     { name: "Pricing", href: "/pricing" },
     { name: "Resources", href: "/blog" },
     { name: "Company", href: "/help" },
@@ -56,7 +57,7 @@ export default function Navigation() {
           >
             <Link href="/" className="flex items-center space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 bg-gradient-to-r from-slate-100 to-slate-200 rounded-xl flex items-center justify-center shadow-lg">
                   <img src="/logo-rebus.webp" alt="RebusAI" className="w-6 h-6" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl blur opacity-30 animate-pulse"></div>
