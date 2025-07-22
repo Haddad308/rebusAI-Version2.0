@@ -106,10 +106,10 @@ export default function Navigation() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
-            <Button variant="ghost" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 font-medium">
+            <Button onClick={() => window.open("https://rebusai.com/web/login")} variant="ghost" className="text-gray-700 hover:text-purple-600 hover:bg-purple-50 font-medium">
               Sign In
             </Button>
-            <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105">
+            <Button onClick={() => window.open("https://rebusai.com/shop/free-trial-3#attr=")} className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105">
               Start Free Trial
             </Button>
           </div>

@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "RebusAI - The Best All-in-One AI Business Platform for Local Commerce",
   description:
-    "Replace 10+ tools with one platform. Get featured in Chamber marketplaces. Activate community-powered referrals. Starting at $9.99/month.",
+    "Replace 10+ tools with one platform. Get featured in Chamber marketplaces. Activate community-powered referrals.",
     generator: 'v0.dev'
 }
 

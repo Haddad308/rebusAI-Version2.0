@@ -56,7 +56,7 @@ export default function HomePage() {
   // Hero Section Data
   const heroStats = [
     { icon: Building2, number: "1,500+", label: "Chamber Partners", color: "from-blue-500 to-cyan-500" },
-    { icon: DollarSign, number: "$80K+", label: "Avg. Household Income", color: "from-green-500 to-teal-500" },
+    { icon: DollarSign, number: "$80K+", label: "Household Income", color: "from-green-500 to-teal-500" },
     { icon: MapPin, number: "50+", label: "Markets Launching", color: "from-purple-500 to-pink-500" },
     { icon: Users, number: "10K+", label: "Active Users", color: "from-orange-500 to-red-500" },
   ]
@@ -141,7 +141,7 @@ export default function HomePage() {
       icon: GraduationCap,
       color: "from-blue-500 to-cyan-500",
       bgColor: "from-blue-50 to-cyan-50",
-      image: "/placeholder.svg?height=300&width=400&text=Coach+Dashboard",
+      image: "https://app.rebusai.com/_next/image?url=%2Ff4.png&w=1080&q=75",
     },
     {
       title: "Digital Marketer",
@@ -428,7 +428,7 @@ export default function HomePage() {
               className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"
             >
               Replace 10+ tools with one platform. Get featured in Chamber marketplaces. Activate community-powered
-              referrals. Starting at <span className="text-blue-600 font-semibold">$9.99/month</span>.
+              referrals.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -462,7 +462,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-10"
             >
               {heroStats.map((stat, index) => (
                 <motion.div
@@ -502,7 +502,7 @@ export default function HomePage() {
               <Target className="w-5 h-5 mr-2 text-red-600" />
               <span className="text-sm font-medium text-red-700">THE PROBLEM</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-bold pb-6 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
               Why Local Businesses Struggle
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -556,7 +556,7 @@ export default function HomePage() {
               <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
               <span className="text-sm font-medium text-green-700">THE SOLUTION</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-bold pb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
               RebusAI: Your Local Commerce Advantage
             </h2>
 
