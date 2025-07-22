@@ -81,11 +81,11 @@ export default function Navigation() {
                   }`}
                 >
                   <span>{item.name}</span>
-                  {item.dropdown && <ChevronDown className="w-4 h-4" />}
+                  {/* {item.dropdown && <ChevronDown className="w-4 h-4" />} */}
                 </Link>
 
                 {/* Dropdown Menu */}
-                {item.dropdown && (
+                {/* {item.dropdown && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
                     <div className="p-2">
                       {item.dropdown.map((dropItem) => (
@@ -99,7 +99,7 @@ export default function Navigation() {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
             ))}
           </div>
