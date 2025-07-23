@@ -285,62 +285,57 @@ export default function HomePage() {
   // Pricing Plans
   const pricingPlans = [
     {
-      name: "Starter",
-      price: "$9.99",
+      name: "Basic",
+      price: "$49",
       period: "/month",
-      description: "Perfect for solopreneurs getting started",
+      annualPrice: "$39",
+      description: "Perfect for solopreneurs and small businesses getting started",
       features: [
-        "AI Website Builder",
-        "Basic Course Creator",
-        "Appointment Booking",
-        "Email Automation (1,000 contacts)",
-        "Chamber Marketplace Listing",
-        "Basic Analytics",
+        "AI Course builder",
+        "2 Website",
+        "Unlimited Funnel Pages",
+        "5,000 Contacts",
+        "Unlimited Email Marketing",
+        "Unlimited Marketing Automation",
+        "Unlimited Courses & Memberships",
+        "Unlimited Digital Products via Online Store (E-Commerce)",
+        "Customer Relationship Management (CRM)",
+        "Unlimited Appointments",
+        "Unlimited Blog, Forums & Task Management",
+        "Unlimited Events",
+        "Unlimited Surveys",
       ],
       popular: false,
       color: "from-green-500 to-teal-500",
       bgColor: "from-green-50 to-teal-50",
-      cta: "Start Free Trial",
+      cta: "Get Started",
+      url: "https://rebusai.com/shop/basic-plan-38#attr=",
+      annualUrl: "https://rebusai.com/shop/basic-plan-annual-41#attr=",
     },
     {
-      name: "Professional",
-      price: "$29.99",
+      name: "Growth",
+      price: "$79",
       period: "/month",
-      description: "For growing coaches and consultants",
+      annualPrice: "$59",
+      description: "For growing businesses and professionals who need advanced features",
       features: [
-        "Everything in Starter",
-        "Advanced Course Creator with Certificates",
-        "Video Conferencing",
-        "CRM System",
-        "Email Automation (10,000 contacts)",
-        "Affiliate Management",
-        "Community Spaces",
+        "Everything From Basic",
+        "SMS Marketing",
+        "Affiliate Program",
+        "AI Funnel Builder",
+        "AI Generated Web Pages",
+        "Advanced Analytics",
+        "AI Survey Builder",
+        "AI Marketing Tools",
         "Priority Support",
+        "Chamber Marketplace Integration",
       ],
       popular: true,
       color: "from-purple-500 to-pink-500",
       bgColor: "from-purple-50 to-pink-50",
       cta: "Most Popular",
-    },
-    {
-      name: "Agency",
-      price: "$99.99",
-      period: "/month",
-      description: "For agencies and multi-location businesses",
-      features: [
-        "Everything in Professional",
-        "White-label Solutions",
-        "Multi-client Management",
-        "Advanced Analytics",
-        "Custom Integrations",
-        "Dedicated Account Manager",
-        "Done-for-You Marketing",
-        "Unlimited Everything",
-      ],
-      popular: false,
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "from-blue-50 to-indigo-50",
-      cta: "Scale Your Agency",
+      url: "https://rebusai.com/shop/growth-plan-39#attr=",
+      annualUrl: "https://rebusai.com/shop/growth-plan-annual-42#attr=",
     },
   ]
 
@@ -405,19 +400,11 @@ export default function HomePage() {
             {/* Main Headline */}
             <motion.h1 style={{ y: textY }} className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
               <span className="block bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
-                The Best All-in-One
+                Sell. Share. Scale
               </span>
               <span className="block bg-gradient-to-r from-blue-600 via-purple-500 to-pink-600 bg-clip-text text-transparent">
-                AI Affiliate Platform
+                Without Limits.
               </span>
-              <motion.span
-                className="block text-gray-700 text-3xl md:text-5xl lg:text-6xl font-light mt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                to Scale Your Business
-              </motion.span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -427,8 +414,7 @@ export default function HomePage() {
               transition={{ delay: 0.6 }}
               className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"
             >
-              Replace 10+ tools with one platform. Get featured in Chamber marketplaces. Activate community-powered
-              referrals.
+              The AI-powered marketplace that lets products meet affiliates—so growth happens on autopilot.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -914,14 +900,20 @@ export default function HomePage() {
               <span className="text-sm font-medium text-green-700">TRANSPARENT PRICING</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-              Simple, Affordable Plans
+              Pricing Plans That Grow Your Business
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Replace expensive tools with one affordable platform. Save hundreds every month.
+              Professional-grade tools at affordable prices. Start building your local business empire today.
             </p>
+            <div className="mt-8 p-4 bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl border border-orange-200 max-w-2xl mx-auto">
+              <p className="text-lg font-semibold text-orange-700 mb-2">🚀 Boost Your Growth</p>
+              <p className="text-orange-600">
+                Enhance any plan with our <strong>Marketing Service</strong> for only <strong>$300/month</strong>
+              </p>
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -953,6 +945,9 @@ export default function HomePage() {
                           {plan.price}
                         </span>
                         <span className="text-gray-500 ml-1">{plan.period}</span>
+                        <div className="text-sm text-green-600 font-semibold mt-1">
+                          Annual: {plan.annualPrice}/month (Save ${(parseInt(plan.price.replace('$', '')) - parseInt(plan.annualPrice.replace('$', ''))) * 12}/year)
+                        </div>
                       </div>
                       <p className="text-gray-600">{plan.description}</p>
                     </div>
@@ -972,7 +967,7 @@ export default function HomePage() {
                           ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold shadow-lg"
                           : `bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-semibold`
                       } py-3`}
-                      onClick={() => setShowPromoModal(true)}
+                      onClick={() => window.open(plan.url, '_blank')}
                     >
                       {plan.cta}
                       <ArrowRight className="ml-2 w-5 h-5" />
@@ -990,13 +985,14 @@ export default function HomePage() {
             className="text-center mt-12"
           >
             <p className="text-gray-600 mb-6">
-              💰 <strong>Save $300-500/month</strong> by replacing multiple tools with RebusAI
+              💰 <strong>Save thousands annually</strong> by replacing multiple tools with RebusAI's all-in-one platform
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-              <span>✅ 14-day free trial</span>
               <span>✅ No setup fees</span>
               <span>✅ Cancel anytime</span>
               <span>✅ 24/7 support</span>
+              <span>✅ Chamber marketplace access</span>
+              <span>✅ White-label options available</span>
             </div>
           </motion.div>
         </div>

@@ -11,87 +11,55 @@ export default function PricingPage() {
 
   const plans = [
     {
-      name: "Starter",
-      description: "Perfect for individuals and small teams getting started with AI",
-      monthlyPrice: 29,
-      annualPrice: 290,
+      name: "Basic Plan",
+      description: "Perfect for solopreneurs and small businesses getting started",
+      monthlyPrice: 49,
+      annualPrice: 39,
       features: [
-        "10,000 AI queries/month",
-        "Basic analytics dashboard",
-        "Email support",
-        "API access",
-        "5 team members",
-        "Basic integrations",
+        "AI Course builder",
+        "2 Website",
+        "Unlimited Funnel Pages",
+        "5000 Contacts",
+        "Unlimited Emailing Marketing",
+        "Unlimited Marketing Automation",
+        "Unlimited Courses & Memberships",
+        "Unlimited Digital Products via Online Store(E-Commerce)",
+        "Customer Relationship Management(CRM)",
+        "Unlimited Appointments",
+        "Unlimited Blog, Forums & Task Management",
+        "Unlimited Events",
+        "Unlimited Surveys",
       ],
       popular: false,
       color: "from-green-500 to-teal-500",
       bgColor: "from-green-50 to-teal-50",
       icon: Zap,
+      url: "https://rebusai.com/shop/basic-plan-38#attr=",
+      annualUrl: "https://rebusai.com/shop/basic-plan-annual-41#attr=",
     },
     {
-      name: "Professional",
-      description: "Ideal for growing businesses scaling with AI",
-      monthlyPrice: 99,
-      annualPrice: 990,
+      name: "Growth Plan",
+      description: "For growing businesses and professionals who need advanced features",
+      monthlyPrice: 79,
+      annualPrice: 59,
       features: [
-        "100,000 AI queries/month",
-        "Advanced analytics & reporting",
-        "Priority support",
-        "Custom integrations",
-        "25 team members",
-        "Advanced API features",
-        "Custom AI training",
-        "White-label options",
+        "Everything From Basic",
+        "SMS Marketing",
+        "Affiliate Program",
+        "AI Funnel Builder",
+        "AI Generated Web Pages",
+        "Advanced Analytics",
+        "AI Survey builder",
+        "AI Marketing tools",
+        "Priority Support",
+        "Chamber Marketplace Integration",
       ],
       popular: true,
       color: "from-purple-500 to-pink-500",
       bgColor: "from-purple-50 to-pink-50",
       icon: Crown,
-    },
-    {
-      name: "Enterprise",
-      description: "For large organizations with complex AI needs",
-      monthlyPrice: 299,
-      annualPrice: 2990,
-      features: [
-        "Unlimited AI queries",
-        "Custom AI model development",
-        "Dedicated account manager",
-        "On-premise deployment",
-        "Unlimited team members",
-        "SLA guarantee",
-        "Advanced security features",
-        "Custom training & onboarding",
-        "24/7 phone support",
-      ],
-      popular: false,
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "from-blue-50 to-indigo-50",
-      icon: Sparkles,
-    },
-  ]
-
-  const addOns = [
-    {
-      name: "Extra Queries",
-      description: "Additional AI queries beyond your plan limit",
-      price: "$0.001 per query",
-      icon: Zap,
-      color: "from-yellow-500 to-orange-500",
-    },
-    {
-      name: "Premium Support",
-      description: "24/7 phone and chat support with 1-hour response time",
-      price: "$99/month",
-      icon: Shield,
-      color: "from-green-500 to-teal-500",
-    },
-    {
-      name: "Global CDN",
-      description: "Enhanced performance with worldwide edge locations",
-      price: "$49/month",
-      icon: Globe,
-      color: "from-blue-500 to-cyan-500",
+      url: "https://rebusai.com/shop/growth-plan-39#attr=",
+      annualUrl: "https://rebusai.com/shop/growth-plan-annual-42#attr=",
     },
   ]
 
@@ -155,7 +123,7 @@ export default function PricingPage() {
       {/* Pricing Cards */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -190,12 +158,12 @@ export default function PricingPage() {
                         <span
                           className={`text-5xl font-bold bg-gradient-to-r ${plan.color} bg-clip-text text-transparent`}
                         >
-                          ${isAnnual ? Math.floor(plan.annualPrice / 12) : plan.monthlyPrice}
+                          ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
                         </span>
                         <span className="text-gray-500 ml-1">/month</span>
                         {isAnnual && (
                           <div className="text-sm text-green-600 font-semibold mt-1">
-                            Save ${plan.monthlyPrice * 12 - plan.annualPrice}/year
+                            Save ${(plan.monthlyPrice - plan.annualPrice) * 12}/year
                           </div>
                         )}
                       </div>
@@ -217,56 +185,11 @@ export default function PricingPage() {
                           ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold shadow-lg"
                           : `bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-semibold`
                       } py-3`}
+                      onClick={() => window.open(isAnnual ? plan.annualUrl : plan.url, '_blank')}
                     >
                       {plan.popular ? "🚀 Get Started" : "Choose Plan"}
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Add-ons */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Optional Add-ons
-            </h2>
-            <p className="text-xl text-gray-600">Enhance your plan with these powerful extras</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {addOns.map((addon, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group"
-              >
-                <Card className="bg-gray-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <CardContent className="p-6 text-center">
-                    <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-r ${addon.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
-                    >
-                      <addon.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">{addon.name}</h3>
-                    <p className="text-gray-600 mb-4">{addon.description}</p>
-                    <div className={`text-2xl font-bold bg-gradient-to-r ${addon.color} bg-clip-text text-transparent`}>
-                      {addon.price}
-                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
