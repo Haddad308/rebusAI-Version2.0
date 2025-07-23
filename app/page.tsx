@@ -141,7 +141,7 @@ export default function HomePage() {
       icon: GraduationCap,
       color: "from-blue-500 to-cyan-500",
       bgColor: "from-blue-50 to-cyan-50",
-      image: "https://app.rebusai.com/_next/image?url=%2Ff4.png&w=1080&q=75",
+      image: "https://images.unsplash.com/photo-1598549762913-0ea144878fa2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "Digital Marketer",
@@ -157,7 +157,7 @@ export default function HomePage() {
       icon: Briefcase,
       color: "from-purple-500 to-pink-500",
       bgColor: "from-purple-50 to-pink-50",
-      image: "/placeholder.svg?height=300&width=400&text=Marketer+Dashboard",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&auto=format",
     },
     {
       title: "Local Business",
@@ -173,7 +173,7 @@ export default function HomePage() {
       icon: Building2,
       color: "from-green-500 to-teal-500",
       bgColor: "from-green-50 to-teal-50",
-      image: "/placeholder.svg?height=300&width=400&text=Business+Dashboard",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&auto=format",
     },
     {
       title: "Agency",
@@ -189,7 +189,7 @@ export default function HomePage() {
       icon: Network,
       color: "from-orange-500 to-red-500",
       bgColor: "from-orange-50 to-red-50",
-      image: "/placeholder.svg?height=300&width=400&text=Agency+Dashboard",
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop&auto=format",
     },
   ]
 
@@ -219,7 +219,7 @@ export default function HomePage() {
       location: "Danville, CA",
       content:
         "RebusAI replaced 8 different tools I was using. The Chamber partnership gave me instant credibility, and I've booked 40% more clients through local referrals.",
-      avatar: "/placeholder.svg?height=60&width=60&text=SM",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b372?w=60&h=60&fit=crop&auto=format",
       rating: 5,
       results: "40% more clients",
       savings: "$400/month saved",
@@ -230,7 +230,7 @@ export default function HomePage() {
       location: "Vista, CA",
       content:
         "The affiliate system is genius. Local businesses are referring each other, creating a network effect. We've onboarded 25 new clients in 3 months.",
-      avatar: "/placeholder.svg?height=60&width=60&text=MC",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&auto=format",
       rating: 5,
       results: "25 new clients",
       savings: "300% ROI increase",
@@ -241,7 +241,7 @@ export default function HomePage() {
       location: "San Ramon, CA",
       content:
         "Being featured in our Chamber marketplace has been incredible. The booking system handles everything, and the community referrals keep growing.",
-      avatar: "/placeholder.svg?height=60&width=60&text=ER",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&auto=format",
       rating: 5,
       results: "200% booking increase",
       savings: "$600/month saved",

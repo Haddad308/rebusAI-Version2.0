@@ -336,7 +336,7 @@ export default function OfferPage() {
                 content:
                   "RebusAI's Black Friday deal was incredible! We saved 70% and got amazing results within the first month.",
                 rating: 5,
-                image: "/placeholder.svg?height=80&width=80",
+                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&auto=format",
                 savings: "Saved $2,400/year",
               },
               {
@@ -345,7 +345,7 @@ export default function OfferPage() {
                 content:
                   "The bonus features alone were worth more than what we paid. Best investment we've made this year!",
                 rating: 5,
-                image: "/placeholder.svg?height=80&width=80",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&auto=format",
                 savings: "Saved $7,200/year",
               },
               {
@@ -354,7 +354,7 @@ export default function OfferPage() {
                 content:
                   "Couldn't believe the discount was real until I saw the results. Our productivity increased by 300%!",
                 rating: 5,
-                image: "/placeholder.svg?height=80&width=80",
+                image: "https://images.unsplash.com/photo-1494790108755-2616b612b372?w=80&h=80&fit=crop&auto=format",
                 savings: "Saved $12,000/year",
               },
             ].map((testimonial, index) => (

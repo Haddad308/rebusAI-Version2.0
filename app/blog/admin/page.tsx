@@ -64,7 +64,7 @@ excerpt: "${formData.excerpt}"
 author: "${formData.author}"
 date: "${currentDate}"
 category: "${formData.category}"
-image: "${formData.image || '/placeholder.svg?height=300&width=400'}"
+image: "${formData.image || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&auto=format'}"
 gradient: "${formData.gradient}"
 ${formData.featured ? 'featured: true' : ''}
 tags: [${formData.tags.split(',').map(tag => `"${tag.trim()}"`).join(', ')}]
