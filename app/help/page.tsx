@@ -5,10 +5,56 @@ import { Search, Book, MessageCircle, Phone, Mail, ArrowRight, HelpCircle, Light
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function HelpPage() {
+  const router = useRouter()
+  const { toast } = useToast()
+  const [searchQuery, setSearchQuery] = useState("")
+  const [isSearching, setIsSearching] = useState(false)
+  const [showSuggestions, setShowSuggestions] = useState(false)
+
+  // Search suggestions
+  const searchSuggestions = [
+    "Getting started",
+    "API authentication",
+    "Rate limits",
+    "Error codes",
+    "Webhook setup",
+    "Billing questions",
+    "Account settings",
+    "Integration examples"
+  ]
+
+  const filteredSuggestions = searchSuggestions.filter(suggestion =>
+    suggestion.toLowerCase().includes(searchQuery.toLowerCase()) && searchQuery.length > 0
+  )
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl/Cmd + K to focus search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        const searchInput = document.querySelector('input[placeholder*="Search"]') as HTMLInputElement
+        if (searchInput) {
+          searchInput.focus()
+        }
+      }
+      // Escape to clear search
+      if (e.key === 'Escape') {
+        setSearchQuery("")
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
   const helpCategories = [
     {
+      id: "getting-started",
       title: "Getting Started",
       description: "Learn the basics and set up your account",
       icon: Lightbulb,
@@ -17,6 +63,7 @@ export default function HelpPage() {
       articles: 12,
     },
     {
+      id: "api-documentation",
       title: "API Documentation",
       description: "Complete guide to our API endpoints",
       icon: Book,
@@ -25,6 +72,7 @@ export default function HelpPage() {
       articles: 24,
     },
     {
+      id: "troubleshooting",
       title: "Troubleshooting",
       description: "Common issues and their solutions",
       icon: HelpCircle,
@@ -33,6 +81,7 @@ export default function HelpPage() {
       articles: 18,
     },
     {
+      id: "best-practices",
       title: "Best Practices",
       description: "Tips to get the most out of RebusAI",
       icon: Zap,
@@ -44,30 +93,144 @@ export default function HelpPage() {
 
   const popularArticles = [
     {
+      id: "getting-started-guide",
       title: "How to Get Started with RebusAI",
       category: "Getting Started",
       readTime: "5 min read",
       views: "12.5k views",
     },
     {
+      id: "api-authentication",
       title: "API Authentication Guide",
       category: "API Documentation",
       readTime: "8 min read",
       views: "8.2k views",
     },
     {
+      id: "common-errors",
       title: "Troubleshooting Common Errors",
       category: "Troubleshooting",
       readTime: "6 min read",
       views: "9.1k views",
     },
     {
+      id: "query-optimization",
       title: "Optimizing AI Query Performance",
       category: "Best Practices",
       readTime: "10 min read",
       views: "6.8k views",
     },
   ]
+
+  // Handle search functionality
+  const handleSearch = () => {
+    if (!searchQuery.trim()) return
+    
+    setIsSearching(true)
+    setShowSuggestions(false)
+    // Simulate search delay
+    setTimeout(() => {
+      setIsSearching(false)
+      // Navigate to search results page or show results
+      router.push(`/help/search?q=${encodeURIComponent(searchQuery)}`)
+    }, 1000)
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch()
+    }
+  }
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setSearchQuery(value)
+    setShowSuggestions(value.length > 0)
+  }
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setSearchQuery(suggestion)
+    setShowSuggestions(false)
+    // Automatically search when suggestion is clicked
+    setTimeout(() => {
+      router.push(`/help/search?q=${encodeURIComponent(suggestion)}`)
+    }, 100)
+  }
+
+  // Handle category click
+  const handleCategoryClick = (categoryId: string) => {
+    // Track category click for analytics
+    if (typeof window !== 'undefined') {
+      // Analytics tracking would go here
+      console.log('Category clicked:', categoryId)
+    }
+    router.push(`/help/category/${categoryId}`)
+  }
+
+  // Handle article click
+  const handleArticleClick = (articleId: string) => {
+    // Track article click for analytics
+    if (typeof window !== 'undefined') {
+      // Analytics tracking would go here
+      console.log('Article clicked:', articleId)
+    }
+    router.push(`/help/article/${articleId}`)
+  }
+
+  // Handle contact support
+  const handleLiveChat = () => {
+    // Integration with chat widget
+    if (typeof window !== 'undefined') {
+      // Example: Intercom, Zendesk Chat, or custom chat widget
+      console.log('Opening live chat...')
+      // window.Intercom && window.Intercom('show')
+      toast({
+        title: "Live Chat",
+        description: "Live chat would open here. Integration needed with your chat provider.",
+      })
+    }
+  }
+
+  const handlePhoneSupport = () => {
+    // Open phone dialer or show phone number
+    if (typeof window !== 'undefined') {
+      window.open('tel:+1-555-REBUS-AI', '_self')
+      toast({
+        title: "Calling Support",
+        description: "Opening phone dialer...",
+      })
+    }
+  }
+
+  const handleEmailSupport = () => {
+    // Open email client or redirect to contact form
+    if (typeof window !== 'undefined') {
+      window.open('mailto:support@rebusai.com?subject=Support Request', '_blank')
+      toast({
+        title: "Email Support",
+        description: "Opening email client...",
+      })
+    }
+  }
+
+  // Handle community links
+  const handleDiscordJoin = () => {
+    if (typeof window !== 'undefined') {
+      window.open('https://discord.gg/rebusai', '_blank')
+      toast({
+        title: "Joining Discord",
+        description: "Opening Discord community in new tab...",
+      })
+    }
+  }
+
+  const handleForumBrowse = () => {
+    router.push('/community/forum')
+    toast({
+      title: "Community Forum",
+      description: "Navigating to community forum...",
+    })
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50 pt-20">
@@ -100,18 +263,45 @@ export default function HelpPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
-              className="max-w-2xl mx-auto mb-8"
+              className="max-w-2xl mx-auto mb-8 relative"
             >
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <Input
-                  placeholder="Search for help articles, guides, and more..."
+                  placeholder="Search for help articles, guides, and more... (Ctrl+K)"
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
+                  onKeyPress={handleKeyPress}
+                  onFocus={() => setShowSuggestions(searchQuery.length > 0)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                   className="pl-12 pr-4 py-4 text-lg bg-white border-2 border-gray-200 focus:border-purple-500 rounded-2xl shadow-lg"
                 />
-                <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white rounded-xl">
-                  Search
+                <Button 
+                  onClick={handleSearch}
+                  disabled={isSearching || !searchQuery.trim()}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white rounded-xl disabled:opacity-50"
+                >
+                  {isSearching ? 'Searching...' : 'Search'}
                 </Button>
               </div>
+              
+              {/* Search Suggestions */}
+              {showSuggestions && filteredSuggestions.length > 0 && (
+                <Card className="absolute top-full left-0 right-0 mt-2 bg-white border-0 shadow-xl z-50">
+                  <CardContent className="p-0">
+                    {filteredSuggestions.slice(0, 5).map((suggestion, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors flex items-center space-x-3 border-b border-gray-100 last:border-b-0"
+                      >
+                        <Search className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-700">{suggestion}</span>
+                      </button>
+                    ))}
+                  </CardContent>
+                </Card>
+              )}
             </motion.div>
           </motion.div>
         </div>
@@ -141,10 +331,12 @@ export default function HelpPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="group cursor-pointer"
               >
                 <Card
-                  className={`bg-gradient-to-br ${category.bgColor} border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full`}
+                  className={`bg-gradient-to-br ${category.bgColor} border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full cursor-pointer`}
+                  onClick={() => handleCategoryClick(category.id)}
                 >
                   <CardContent className="p-6 text-center">
                     <div
@@ -191,9 +383,13 @@ export default function HelpPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
                 className="group cursor-pointer"
               >
-                <Card className="bg-gray-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card 
+                  className="bg-gray-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={() => handleArticleClick(article.id)}
+                >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -241,6 +437,7 @@ export default function HelpPage() {
                 bgColor: "from-green-50 to-teal-50",
                 action: "Start Chat",
                 availability: "Available 24/7",
+                handler: handleLiveChat,
               },
               {
                 title: "Phone Support",
@@ -250,6 +447,7 @@ export default function HelpPage() {
                 bgColor: "from-blue-50 to-cyan-50",
                 action: "Call Now",
                 availability: "Mon-Fri 9AM-6PM EST",
+                handler: handlePhoneSupport,
               },
               {
                 title: "Email Support",
@@ -259,6 +457,7 @@ export default function HelpPage() {
                 bgColor: "from-purple-50 to-pink-50",
                 action: "Send Email",
                 availability: "Response within 2 hours",
+                handler: handleEmailSupport,
               },
             ].map((contact, index) => (
               <motion.div
@@ -283,6 +482,7 @@ export default function HelpPage() {
                     <p className="text-gray-600 mb-4">{contact.description}</p>
                     <p className="text-sm text-gray-500 mb-6">{contact.availability}</p>
                     <Button
+                      onClick={contact.handler}
                       className={`bg-gradient-to-r ${contact.color} hover:opacity-90 text-white font-semibold w-full`}
                     >
                       {contact.action}
@@ -312,6 +512,7 @@ export default function HelpPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
+                onClick={handleDiscordJoin}
                 className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold px-8 py-4"
               >
                 Join Discord Community
@@ -320,6 +521,7 @@ export default function HelpPage() {
               <Button
                 size="lg"
                 variant="outline"
+                onClick={handleForumBrowse}
                 className="border-2 border-purple-300 text-purple-600 hover:bg-purple-50 px-8 py-4 bg-transparent"
               >
                 Browse Forum

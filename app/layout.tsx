@@ -4,6 +4,8 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import { Toaster } from "@/components/ui/toaster"
+import HelpFloatingButton from "@/components/help-floating-button"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,10 +23,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo2.png" sizes="any" />
+      </head>
       <body className={inter.className}>
         <Navigation />
         {children}
         <Footer />
+        <HelpFloatingButton />
+        <Toaster />
       </body>
     </html>
   )
