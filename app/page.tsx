@@ -219,7 +219,7 @@ export default function HomePage() {
       location: "Danville, CA",
       content:
         "RebusAI replaced 8 different tools I was using. The Chamber partnership gave me instant credibility, and I've booked 40% more clients through local referrals.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b372?w=60&h=60&fit=crop&auto=format",
+      avatar: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       rating: 5,
       results: "40% more clients",
       savings: "$400/month saved",
